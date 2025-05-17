@@ -1,2 +1,7 @@
 .idea/inspectionProfiles/profiles_settings.xml
 .env
+tests/data/test.txt
+tests/unit/__pycache__/test_file_upload.cpython-311-pytest-8.3.5.pyc
+tests/unit/test_file_upload.py
+tests/unit/test_file_upload.py
+tests/unit/test_file_upload.py
