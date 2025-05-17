@@ -1,4 +1,5 @@
 # app/main.py
+from app.routers import upload_router
 from app.utils.logger import configure_logging
 
 # ✅ 第一步：初始化日志（必须在所有导入之前）
@@ -11,7 +12,7 @@ import logging
 logger = logging.getLogger()
 app = FastAPI()
 
-
+app.include_router(upload_router.router, prefix="/api/v1/files")
 @app.get("/")
 def read_root():
     logger.debug("=== 应用启动2 ===")

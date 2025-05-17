@@ -40,11 +40,13 @@ async def upload_file(file: UploadFile):
         with open(file_path, "wb") as buffer:
             buffer.write(await file.read())
 
-        logger.info("File uploaded successfully", extra={
-            "filename": file.filename,
-            "size": file.size,
-            "saved_path": str(file_path)
-        })
+        logger.info(
+            "File uploaded successfully",
+            extra={
+                "file_name": file.filename,  # 修改键名
+                "status": "success"
+            }
+        )
 
         return {
             "filename": file.filename,
@@ -54,10 +56,14 @@ async def upload_file(file: UploadFile):
         }
 
     except Exception as e:
-        logger.error("File upload failed", exc_info=True, extra={
-            "error": str(e),
-            "filename": file.filename
-        })
+        logger.error(
+            "File upload failed",
+            exc_info=True,
+            extra={
+                "file_name": file.filename,  # 修改键名
+                "status": "failed"
+            }
+        )
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="File processing failed"
